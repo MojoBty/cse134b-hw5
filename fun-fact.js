@@ -163,13 +163,48 @@ class FunFact extends HTMLElement {
 
 customElements.define("fun-fact", FunFact);
 
+// Saved compact/expanded preference
+
+const MODE_KEY = "hw5-fun-fact-mode";
+const DEFAULT_MODE = "expanded";
+const VALID_MODES = ["compact", "expanded"];
+
+function readMode() {
+  try {
+    const saved = localStorage.getItem(MODE_KEY);
+    return VALID_MODES.includes(saved) ? saved : DEFAULT_MODE;
+  } catch (error) {
+    console.warn("Could not read the saved fun fact mode.", error);
+    return DEFAULT_MODE;
+  }
+}
+
+function saveMode(mode) {
+  try {
+    localStorage.setItem(MODE_KEY, mode);
+  } catch (error) {
+    console.warn("Could not save the fun fact mode.", error);
+  }
+}
+
 const funFact = document.querySelector("#fun-fact");
 const toggleButton = document.querySelector("#fun-fact-toggle");
 
+function applyMode(mode) {
+  const isCompact = mode === "compact";
+  funFact.toggleAttribute("compact", isCompact);
+  toggleButton.setAttribute("aria-pressed", String(isCompact));
+  toggleButton.textContent = isCompact ? "Show source" : "Hide source";
+}
+
 if (funFact && toggleButton) {
+  toggleButton.hidden = false;
+  
+  applyMode(readMode());
+
   toggleButton.addEventListener("click", () => {
-    const isCompact = funFact.toggleAttribute("compact");
-    toggleButton.setAttribute("aria-pressed", String(isCompact));
-    toggleButton.textContent = isCompact ? "Show source" : "Hide source";
+    const newMode = funFact.hasAttribute("compact") ? "expanded" : "compact";
+    applyMode(newMode);
+    saveMode(newMode);
   });
 }

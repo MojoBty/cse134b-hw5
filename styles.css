@@ -374,17 +374,34 @@ form fieldset {
     font-weight: 600;
 }
 
+#fun-fact-toggle {
+    margin-bottom: 1.5rem;
+}
+
+/* ---------- Fun fact component (HW 5) ---------- */
+
+fun-fact {
+    --fun-fact-background: var(--surface-color, #ffffff);
+    --fun-fact-text: var(--text-color, #1d1d1f);
+    --fun-fact-muted: var(--muted-text, #515154);
+    --fun-fact-border: var(--border-color, #d2d2d7);
+    --fun-fact-accent: var(--accent-color, #0066cc);
+    --fun-fact-error: var(--error-color, #b42318);
+    --fun-fact-success: var(--success-color, #19713a);
+}
+
 fun-fact {
     display: block;
     margin-block: 1.5rem 1rem;
-    background-color: var(--surface-color);
-    border: 1px solid var(--border-color);
-    border-radius: var(--card-radius);
     padding: 1.5rem;
+    border-radius: var(--card-radius, 1.5rem);
+    background-color: var(--fun-fact-background, #ffffff);
+    color: var(--fun-fact-text, #1d1d1f);
+    border: 1px solid var(--fun-fact-border, #d2d2d7);
 }
 
 fun-fact h3 {
-    color: var(--muted-text);
+    color: var(--fun-fact-muted, #515154);
     font-size: 0.875rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -401,29 +418,43 @@ fun-fact > p:first-of-type {
 }
 
 fun-fact > p:nth-of-type(2) {
-    color: var(--muted-text);
+    color: var(--fun-fact-muted, #515154);
     font-size: 0.875rem;
 }
 
-fun-fact > p:last-child {
-    margin: 0.75rem 0 0;
-    color: var(--muted-text);
-    font-size: 0.875rem;
+fun-fact a {
+    color: var(--fun-fact-accent, #0066cc);
 }
 
-#fun-fact-toggle {
-    margin-bottom: 1.5rem;
+fun-fact button {
+    color: var(--fun-fact-text, #1d1d1f);
+    background-color: var(--fun-fact-background, #ffffff);
 }
 
-fun-fact > p[data-state="error"] {
-    color: var(--error-color);
-}
-
-fun-fact > p[data-state="success"] {
-    color: var(--success-color);
+fun-fact button:focus {
+    outline: 2px solid var(--fun-fact-accent, #0066cc);
+    outline-offset: 4px;
 }
 
 fun-fact button[aria-disabled="true"] {
     opacity: 0.6;
     cursor: progress;
+}
+
+fun-fact > p:last-child {
+    margin: 0.75rem 0 0;
+    color: var(--fun-fact-muted, #515154);
+    font-size: 0.875rem;
+}
+
+fun-fact > p[data-state="error"] {
+    color: var(--fun-fact-error, #b42318);
+}
+
+fun-fact > p[data-state="success"] {
+    color: var(--fun-fact-success, #19713a);
+}
+
+fun-fact:not(:defined) {
+    display: none;
 }
