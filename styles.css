@@ -1,4 +1,4 @@
-/* Mojo Batey, https://github.com/MojoBty/cse134b-hw4 */
+/* Mojo Batey, https://github.com/MojoBty/cse134b-hw5 */
 
 :root {
     --text-color: #1d1d1f;
@@ -372,4 +372,58 @@ form fieldset {
 #comments-count.count-warning {
     color: var(--warning-color);
     font-weight: 600;
+}
+
+fun-fact {
+    display: block;
+    margin-block: 1.5rem 1rem;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--card-radius);
+    padding: 1.5rem;
+}
+
+fun-fact h3 {
+    color: var(--muted-text);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+fun-fact p {
+    margin-bottom: 0.75rem;
+}
+
+fun-fact > p:first-of-type {
+    font-size: 1.25rem;
+    line-height: 1.4;
+}
+
+fun-fact > p:nth-of-type(2) {
+    color: var(--muted-text);
+    font-size: 0.875rem;
+}
+
+fun-fact > p:last-child {
+    margin: 0.75rem 0 0;
+    color: var(--muted-text);
+    font-size: 0.875rem;
+}
+
+#fun-fact-toggle {
+    margin-bottom: 1.5rem;
+}
+
+fun-fact > p[data-state="error"] {
+    color: var(--error-color);
+}
+
+fun-fact > p[data-state="success"] {
+    color: var(--success-color);
+}
+
+fun-fact button[aria-disabled="true"] {
+    opacity: 0.6;
+    cursor: progress;
 }
