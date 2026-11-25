@@ -1,4 +1,4 @@
-# CSE 134B HW5 - Mojo Batey
+# CSE 134B HW5
 
 This is my portfolio site for Homework 5. The Web Component is called `<fun-fact>` and it loads random facts from the Useless Facts API. It is on the home page in the "Take a Break" section.
 
