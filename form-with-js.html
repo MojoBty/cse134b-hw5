@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+        content="Contact Mojo Batey about software engineering opportunities and project collaborations.">
+  <title>Contact | Mojo Batey</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <script src="form.js" defer></script>
+  <script src="theme.js" defer></script>
+</head>
+<body>
+  <header>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="form-with-js.html" aria-current="page">Contact Form (HW 4)</a></li>
+        <li><a href="form-no-js.html">Contact Form (no JS, HW 4)</a></li>
+        <li id="theme-control" hidden>
+            <button type="button" id="theme-toggle">Switch to dark theme</button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+        <h2>Send a Message</h2>
+        <p id="form-note">
+          This demo sends your entries to a test endpoint. Use sample contact
+          information.
+        </p>
+      
+        <form class="contact-form"
+              action="https://httpbin.org/post"
+              method="post"
+              aria-describedby="form-note">
+            <fieldset>
+                <legend>Your Contact Information</legend>
+        
+                <label for="name">Name (required, 1-100 characters)</label>
+                <input type="text" id="name" name="name" autocomplete="name"
+                    minlength="1" maxlength="100" required
+                    aria-describedby="name-error">
+        
+                <label for="email">Email (required)</label>
+                <input type="email" id="email" name="email" autocomplete="email" required
+                    aria-describedby="email-error">
+            </fieldset>
+      
+            <fieldset>
+                <legend>Your Message</legend>
+        
+                <label for="comments">Comments (required, 10-1000 characters)</label>
+                <textarea id="comments" name="comments" rows="6"
+                    minlength="10" maxlength="1000" required
+                    aria-describedby="comments-error"></textarea>
+            </fieldset>
+      
+            <input type="hidden" name="possible_bot" value="true">
+            <input type="hidden" name="form-errors" disabled>
+
+            <section id="form-errors" aria-labelledby="form-errors-heading" hidden>
+                <h3 id="form-errors-heading">Form errors</h3>
+                <section aria-label="Field errors" aria-live="polite">
+                    <p id="name-error" hidden></p>
+                    <p id="email-error" hidden></p>
+                    <p id="comments-error" hidden></p>
+                </section>
+            </section>
+        
+            <section id="form-info" aria-labelledby="form-info-heading" hidden>
+                <h3 id="form-info-heading">Form information</h3>
+                <p id="comments-count"></p>
+            </section>
+      
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+  </main>
+
+  <footer>
+    <p><a href="contact.html" aria-current="page">Contact me</a></p>
+    <p><a href="experiments.html">HTML experiments</a></p>
+    <p><small>&copy; 2026 Mojo Batey</small></p>
+  </footer>
+</body>
+</html>

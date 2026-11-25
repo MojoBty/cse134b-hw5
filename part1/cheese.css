@@ -1,0 +1,54 @@
+/* Mojo Batey, https://github.com/MojoBty/cse134b-hw3 */
+
+body {
+    font-family: system-ui, sans-serif;
+    color: #232323;
+    line-height: 1.6;
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+h1 {
+    font-size: 3rem;
+  }
+  
+h2 {
+    font-size: 2rem;
+}
+
+.latin {
+    font-style: italic;
+}
+
+blockquote {
+    border: 2px solid #555;
+    margin: 2rem 0;
+    padding: 1rem;
+}
+  
+#warning {
+    background-color: #fff3cd;
+}
+
+a:hover {
+    color: #5511c2;
+    text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+button:focus {
+    outline: 3px solid #2055c8;
+    outline-offset: 3px;
+}
+
+h1 {
+    color: darkblue;
+}
+  
+/* Even though there is a previous rule for the h1 in the same scope, the later
+rule wins because of source order, where the later rule overrides the earlier one. */
+h1 {
+    color: purple;
+}
