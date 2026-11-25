@@ -1,0 +1,55 @@
+---
+// Layout shared by both pages: head, nav, page content, and the shared footer.
+import Footer from "../components/Footer.astro";
+
+const { title, description, mainClass } = Astro.props;
+
+const navLinks = [
+  { href: "/about.html", label: "About" },
+  { href: "/experience.html", label: "Experience" },
+];
+
+// Compare paths without ".html" or a trailing slash,
+// so "/about", "/about/", and "/about.html" all match
+const normalize = (path) => path.replace(/\.html$/, "").replace(/\/$/, "");
+const currentPath = normalize(Astro.url.pathname);
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content={description}>
+    <title>{title} | Mojo Batey</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="/assets/favicon.png" type="image/png">
+    <script is:inline src="/theme.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <nav aria-label="Main navigation">
+        <ul>
+          {navLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                aria-current={normalize(link.href) === currentPath ? "page" : undefined}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+          <li id="theme-control" hidden>
+            <button type="button" id="theme-toggle">Switch to dark theme</button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class={mainClass}>
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>
